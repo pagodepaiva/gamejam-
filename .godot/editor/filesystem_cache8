@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1729314865
+character_body_2d.gd::GDScript::-1::1729304468::0::1::::<>CharacterBody2D<>::
+icon.svg::CompressedTexture2D::2141018507047423930::1729304468::1729305105::1::::<><>::
+main.tscn::PackedScene::1198073817947487226::1729314857::0::1::::<><>::res://scripts/main.gd
+movement_fish.tscn::PackedScene::127298133261978681::1729304468::0::1::::<><>::res://character_body_2d.gd<>uid://5rei54233ve5::::res://icon.svg
+new_script.gd::GDScript::-1::1729304468::0::1::::<>Node<>::
+::res://scenes/::1729314857
+left_roaming_fish.tscn::PackedScene::1044521534164443188::1729314857::0::1::::<><>::res://scripts/left_roaming_fish.gd<>uid://ddfxqchb3q5o0::::res://scenes/roaming_fish.tscn
+right_roaming_fish.tscn::PackedScene::2008695310798846002::1729314857::0::1::::<><>::res://scripts/right_roaming_fish.gd<>uid://ddfxqchb3q5o0::::res://scenes/roaming_fish.tscn
+roaming_fish.tscn::PackedScene::7381575650243654285::1729314857::0::1::::<><>::res://scripts/roaming_fish.gd
+::res://scripts/::1729314481
+left_roaming_fish.gd::GDScript::-1::1729310782::0::1::::<>Node2D<>::
+main.gd::GDScript::-1::1729314188::0::1::::<>Node2D<>::
+right_roaming_fish.gd::GDScript::-1::1729312548::0::1::::<>Node2D<>::
+roaming_fish.gd::GDScript::-1::1729314481::0::1::::<>CharacterBody2D<>::

@@ -1,0 +1,6 @@
+Timer
+Node2D
+VisibleOnScreenNotifier2D
+CollisionShape2D
+CharacterBody2D
+Panel
