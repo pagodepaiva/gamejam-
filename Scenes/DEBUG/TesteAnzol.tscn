@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b5x0hxo5a6v5y"]
 
 [ext_resource type="Script" path="res://Scripts/node_2d.gd" id="1_npt8x"]
+[ext_resource type="Script" path="res://Scripts/TesteAnzol.gd" id="2_8v2up"]
 [ext_resource type="Texture2D" uid="uid://cuhkgjq72mwcf" path="res://Arts/Anzol.png" id="2_npni2"]
 
 [sub_resource type="GDScript" id="GDScript_mmo1j"]
@@ -17,39 +18,6 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="GDScript" id="GDScript_e5t4b"]
-script/source = "extends Area2D
-signal hit
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	$CollisionShape2D.set_deferred(\"disabled\",true)
-
-func ChangeCollision():
-	if Input.is_action_pressed(\"LeftMButton\"):
-			$CollisionShape2D.set_deferred(\"disabled\",false)
-	else:
-		$CollisionShape2D.set_deferred(\"disabled\",true)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	ChangeCollision()
-
-
-func _on_body_entered(body: Node2D) -> void:
-	hit.emit()
-	$Sprite2D.texture = preload(\"res://Arts/peixe1.png\")
-	$CollisionShape2D.set_deferred(\"disabled\",true)
-
-
-func _on_area_entered(area: Area2D) -> void:
-	hit.emit()
-	$Sprite2D.texture = preload(\"res://Arts/peixe1.png\")
-	$CollisionShape2D.set_deferred(\"disabled\",true)
-	
-"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_540df"]
 radius = 92.0
 height = 472.0
@@ -58,6 +26,7 @@ height = 472.0
 script = ExtResource("1_npt8x")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,7 +46,7 @@ script = SubResource("GDScript_mmo1j")
 [node name="HookSprite" type="Area2D" parent="."]
 position = Vector2(0, 600)
 scale = Vector2(0.25, 0.25)
-script = SubResource("GDScript_e5t4b")
+script = ExtResource("2_8v2up")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookSprite"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cg1fdbauq0h55"]
 
-[ext_resource type="PackedScene" uid="uid://b5x0hxo5a6v5y" path="res://Scenes/TesteAnzol.tscn" id="1_5a4vj"]
+[ext_resource type="PackedScene" uid="uid://b5x0hxo5a6v5y" path="res://Scenes/DEBUG/TesteAnzol.tscn" id="1_5a4vj"]
 [ext_resource type="Script" path="res://Scripts/FishScriptDebug.gd" id="2_gso4v"]
 [ext_resource type="Texture2D" uid="uid://n4t0lm1mcb4m" path="res://Arts/peixe1.png" id="3_gr57a"]
 

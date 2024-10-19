@@ -1,9 +1,10 @@
 extends Node2D
 
+#DEBUG ONLY
 func Dquit(): #DEVE ser retirado do código final
 	if Input.is_action_just_pressed("down"):
 		get_tree().quit()
-
+#DEBUG ONLY
 
 func _ready() -> void:
 	$Line2D.set_point_position(0,$EndFishingRod.position)
@@ -28,5 +29,6 @@ func _process(delta: float) -> void:
 	$Line2D.set_point_position(1,pos)
 	$HookSprite.position = $Line2D.get_point_position(1) - Vector2(16,0) + Vector2(0,45) #o que tá em Vector2 é Correção da Imagem
 	
-	
+	#DEBUG ONLY
 	Dquit()
+	#DEBUG ONLY

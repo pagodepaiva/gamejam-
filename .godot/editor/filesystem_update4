@@ -21,3 +21,7 @@ res://Scripts/node_2d.gd
 res://Scripts/Fisch_Nemo.gd
 res://Scripts/random_direction_fish_test.gd
 res://Scripts/Fish_Nemo.gd
+res://Scenes/TestImplementacao.tscn
+res://Scenes/DEBUG/TesteAnzol.tscn
+res://Scenes/FishMov.tscn
+res://Scenes/DEBUG/ImplementationTest.tscn

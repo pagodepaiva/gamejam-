@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://tvd33gfr7lny"]
+
+[ext_resource type="PackedScene" uid="uid://c8vvg6ytnvny7" path="res://Scenes/FishMov.tscn" id="1_akeoa"]
+[ext_resource type="PackedScene" uid="uid://b5x0hxo5a6v5y" path="res://Scenes/DEBUG/TesteAnzol.tscn" id="2_ui0jv"]
+
+[node name="Node" type="Node"]
+
+[node name="Node" parent="." instance=ExtResource("1_akeoa")]
+
+[node name="Node2D" parent="Node" instance=ExtResource("2_ui0jv")]
