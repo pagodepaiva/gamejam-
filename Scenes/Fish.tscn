@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbmn5ebnidmlr"]
+
+[ext_resource type="Script" path="res://Scripts/Fish_Nemo.gd" id="1_fcg2f"]
+[ext_resource type="Texture2D" uid="uid://dj6vaxbtnsabs" path="res://Arts/peixe_1(1).png" id="2_hlq68"]
+[ext_resource type="Texture2D" uid="uid://dcfy13sclt4ab" path="res://Arts/peixe_1.png" id="3_t6ppg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bj7rk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hlq68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t6ppg")
+}],
+"loop": true,
+"name": &"swimming",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bwi0b"]
+radius = 46.0
+height = 122.0
+
+[node name="Fish" type="RigidBody2D"]
+collision_mask = 0
+mass = 0.001
+gravity_scale = 0.0
+continuous_cd = 2
+linear_damp_mode = 1
+script = ExtResource("1_fcg2f")
+
+[node name="FishSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_bj7rk")
+animation = &"swimming"
+frame = 1
+frame_progress = 0.688793
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-40, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-38, -16)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bwi0b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
