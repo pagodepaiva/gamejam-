@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp81m2kv008o"]
+
+[ext_resource type="Script" path="res://Scenes/FishingMinigame/fishing_minigame.gd" id="1_10bap"]
+[ext_resource type="PackedScene" uid="uid://caymoeelvms6y" path="res://Scenes/FishingMinigame/fishing_bar.tscn" id="1_oq7sb"]
+
+[node name="FishingMinigame" type="Node2D"]
+script = ExtResource("1_10bap")
+
+[node name="Range" type="Panel" parent="."]
+offset_left = 200.0
+offset_top = 150.0
+offset_right = 208.0
+offset_bottom = 482.0
+
+[node name="FishingBar" parent="." instance=ExtResource("1_oq7sb")]
+position = Vector2(204, 300)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

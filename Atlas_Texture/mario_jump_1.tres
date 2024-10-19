@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://crwod5rartk1v"]
+
+[ext_resource type="Texture2D" uid="uid://c8f1fssp3ho7i" path="res://Assets/Mario/mario.png" id="1_aw76l"]
+
+[resource]
+atlas = ExtResource("1_aw76l")
+region = Rect2(248, 115, 16, 29)

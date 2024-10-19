@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5il8ude58skc"]
+
+[ext_resource type="Texture2D" uid="uid://cgiiyuu8roh4m" path="res://Atlas_Texture/fishing_bar.tres" id="1_l7rtm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3j01"]
+radius = 8.0
+height = 78.0
+
+[node name="FishingMinigameLine" type="Area2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_l7rtm")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_o3j01")

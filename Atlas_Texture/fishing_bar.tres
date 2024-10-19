@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cgiiyuu8roh4m"]
+
+[ext_resource type="Texture2D" uid="uid://ceswm4hxswept" path="res://Assets/FishingBar.png" id="1_fkjju"]
+
+[resource]
+atlas = ExtResource("1_fkjju")
+region = Rect2(782, 1804, 2532, 558)
