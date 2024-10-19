@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://drifino6j3bik"]
+
+[ext_resource type="Script" path="res://scripts/sky_bg.gd" id="1_i7pxy"]
+[ext_resource type="Texture2D" uid="uid://15n7u7vs5w7o" path="res://assets/sky.png" id="2_0al36"]
+
+[node name="sky_BG" type="ParallaxBackground"]
+script = ExtResource("1_i7pxy")
+metadata/_edit_vertical_guides_ = [3024.0, 2160.0]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(2160, 0)
+
+[node name="Sky" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(540, 405)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0al36")
+
+[node name="Sky2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(1620, 405)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0al36")
+flip_h = true

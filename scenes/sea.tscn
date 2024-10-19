@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds2nmxnvjyupu"]
+
+[ext_resource type="Script" path="res://scripts/sea.gd" id="1_dc81p"]
+[ext_resource type="Texture2D" uid="uid://bl2fayu14l1tc" path="res://assets/mar_tamanho_duplicado.png" id="2_jnw60"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqpk7"]
+size = Vector2(1939, 636)
+
+[node name="sea" type="CharacterBody2D"]
+position = Vector2(2, 0)
+script = ExtResource("1_dc81p")
+metadata/_edit_vertical_guides_ = [2142.0, 1920.0, 2130.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(981, 757)
+shape = SubResource("RectangleShape2D_uqpk7")
+disabled = true
+
+[node name="MarTamanhoDuplicado" type="Sprite2D" parent="."]
+position = Vector2(1071, 179)
+texture = ExtResource("2_jnw60")
+
+[node name="lefty" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-12, 597)
+
+[node name="righty" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2123, 773)
+
+[node name="upsy" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(962.5, 1069)
+
+[node name="downsy" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(962, 1149)
+
+[connection signal="screen_entered" from="lefty" to="." method="_on_lefty_screen_entered"]
+[connection signal="screen_entered" from="righty" to="." method="_on_righty_screen_entered"]
+[connection signal="screen_entered" from="upsy" to="." method="_on_upsy_screen_entered"]
+[connection signal="screen_exited" from="upsy" to="." method="_on_upsy_screen_exited"]
+[connection signal="screen_entered" from="downsy" to="." method="_on_downsy_screen_entered"]
+[connection signal="screen_exited" from="downsy" to="." method="_on_downsy_screen_exited"]

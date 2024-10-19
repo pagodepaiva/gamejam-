@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqxf445u0wvor"]
+
+[ext_resource type="PackedScene" uid="uid://ds2nmxnvjyupu" path="res://scenes/sea.tscn" id="1_e6ne1"]
+[ext_resource type="PackedScene" uid="uid://drifino6j3bik" path="res://scenes/sky_bg.tscn" id="2_paqp1"]
+[ext_resource type="Texture2D" uid="uid://dcotnrb5b8ile" path="res://assets/Bancada PNG.png" id="3_dp6vw"]
+[ext_resource type="PackedScene" uid="uid://c85yt58qriosx" path="res://scenes/bear.tscn" id="4_0xwrq"]
+[ext_resource type="PackedScene" uid="uid://rcmdoprt4dwk" path="res://scenes/lots_of_fishes.tscn" id="5_cpy8r"]
+
+[node name="Display" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [596.0]
+
+[node name="sky_BG" parent="." instance=ExtResource("2_paqp1")]
+
+[node name="BancadaPng" type="Sprite2D" parent="."]
+position = Vector2(947, 485)
+texture = ExtResource("3_dp6vw")
+
+[node name="bear" parent="BancadaPng" instance=ExtResource("4_0xwrq")]
+position = Vector2(-522, -268)
+
+[node name="sea" parent="." instance=ExtResource("1_e6ne1")]
+position = Vector2(0, 0)
+
+[node name="main" parent="." instance=ExtResource("5_cpy8r")]
+position = Vector2(-1, -1)
