@@ -1,12 +1,16 @@
-extends Area2D
+# Movement where the character rotates and moves forward or backward.
+extends RigidBody2D
 
-const VELOCITY = 1
+# Movement speed in pixels per second.
+var lineDirection = Vector2()
+var speed := 1
+	   
+func calc():
+	if Input.get_action_strength("ui_accept") == 1:
+		return 1
+	else:
+		return -1
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta):
+	lineDirection.y = calc()*speed
+	move_and_collide(lineDirection)
