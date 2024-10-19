@@ -3,19 +3,38 @@
 [ext_resource type="PackedScene" uid="uid://caymoeelvms6y" path="res://Scenes/FishingMinigame/fishing_bar.tscn" id="1_oq7sb"]
 [ext_resource type="PackedScene" uid="uid://b2wt1nokgsa8" path="res://Scenes/FishingMinigame/fishing_minigame_line.tscn" id="2_uacom"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax3kq"]
-size = Vector2(10, 2.875)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iitr6"]
 size = Vector2(10, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ax3kq"]
+size = Vector2(10, 2.875)
 
 [node name="FishingMinigame" type="Node2D"]
 
 [node name="Range" type="Panel" parent="."]
-offset_left = 200.0
-offset_top = 150.0
-offset_right = 208.0
-offset_bottom = 482.0
+offset_left = 198.0
+offset_top = 61.0
+offset_right = 206.0
+offset_bottom = 393.0
+scale = Vector2(1.5, 1.5)
+
+[node name="LowerLimit" type="StaticBody2D" parent="Range"]
+position = Vector2(4, 341)
+disable_mode = 1
+collision_layer = 3
+
+[node name="CollisionLowerLimit" type="CollisionShape2D" parent="Range/LowerLimit"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_iitr6")
+
+[node name="UpperLimit" type="StaticBody2D" parent="Range"]
+position = Vector2(-187, -150)
+disable_mode = 1
+collision_layer = 3
+
+[node name="CollisionUpperLimit" type="CollisionShape2D" parent="Range/UpperLimit"]
+position = Vector2(191, 149)
+shape = SubResource("RectangleShape2D_ax3kq")
 
 [node name="FishingBar" parent="." instance=ExtResource("1_oq7sb")]
 position = Vector2(204, 300)
@@ -24,26 +43,9 @@ position = Vector2(204, 300)
 wait_time = 0.5
 autostart = true
 
-[node name="UpperLimit" type="StaticBody2D" parent="."]
-position = Vector2(13, 0)
-disable_mode = 1
-collision_layer = 3
-
-[node name="CollisionUpperLimit" type="CollisionShape2D" parent="UpperLimit"]
-position = Vector2(191, 149)
-shape = SubResource("RectangleShape2D_ax3kq")
-
-[node name="LowerLimit" type="StaticBody2D" parent="."]
-position = Vector2(204, 491)
-disable_mode = 1
-collision_layer = 3
-
-[node name="CollisionLowerLimit" type="CollisionShape2D" parent="LowerLimit"]
-position = Vector2(0, -8.5)
-shape = SubResource("RectangleShape2D_iitr6")
-
 [node name="FishingMinigameLine" parent="." instance=ExtResource("2_uacom")]
-position = Vector2(204, 394)
+position = Vector2(206, 330)
 
+[connection signal="body_entered" from="FishingBar" to="FishingBar" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="FishingBar" method="_on_timer_timeout"]
