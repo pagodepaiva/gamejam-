@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2wt1nokgsa8"]
+[gd_scene load_steps=3 format=3 uid="uid://b2wt1nokgsa8"]
 
 [ext_resource type="Script" path="res://Scripts/FishingMinigameScripts/fishing_minigame_line.gd" id="1_4w5eu"]
-[ext_resource type="Texture2D" uid="uid://b4kyoapr3meaj" path="res://icon.svg" id="2_x8n1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o82l6"]
-size = Vector2(128, 128)
+size = Vector2(40, 11)
 
 [node name="FishingMinigameLine" type="Node2D"]
 
@@ -14,8 +13,12 @@ collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource("1_4w5eu")
 
-[node name="LineSprite" type="Sprite2D" parent="Line"]
-texture = ExtResource("2_x8n1u")
-
 [node name="CollisionLine" type="CollisionShape2D" parent="Line"]
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_o82l6")
+
+[node name="Panel" type="Panel" parent="Line"]
+offset_left = -20.0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 9.0

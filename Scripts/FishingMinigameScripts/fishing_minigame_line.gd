@@ -3,7 +3,7 @@ extends RigidBody2D
 
 # Movement speed in pixels per second.
 var lineDirection = Vector2()
-var speed := 1
+const speed = 1.5
 	   
 func calc():
 	if Input.get_action_strength("ui_accept") == 1:
