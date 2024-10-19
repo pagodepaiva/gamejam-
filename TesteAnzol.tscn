@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5x0hxo5a6v5y"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_npt8x"]
+[ext_resource type="Texture2D" uid="uid://cuhkgjq72mwcf" path="res://Arts/Anzol.png" id="2_npni2"]
+[ext_resource type="Script" path="res://line_2d.gd" id="3_o4lol"]
+
+[sub_resource type="GDScript" id="GDScript_mmo1j"]
+script/source = "extends Marker2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_e5t4b"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_540df"]
+radius = 92.0
+height = 472.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_npt8x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.235979, 0.717237, 0.68055, 1)
+
+[node name="EndFishingRod" type="Marker2D" parent="."]
+position = Vector2(400, 227)
+
+[node name="Hook" type="Marker2D" parent="."]
+position = Vector2(415, 553)
+script = SubResource("GDScript_mmo1j")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 600)
+scale = Vector2(0.25, 0.25)
+script = SubResource("GDScript_e5t4b")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-16, -4)
+rotation = 3.14159
+shape = SubResource("CapsuleShape2D_540df")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("2_npni2")
+
+[node name="Hoook" type="Marker2D" parent="Area2D"]
+position = Vector2(60, -188)
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(400, 0)
+points = PackedVector2Array(-9, 80, -9, 90)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
+script = ExtResource("3_o4lol")

@@ -13,3 +13,8 @@ func calc():
 func _physics_process(delta):
 	velocity = (calc()) * transform.y * speed
 	move_and_slide()
+
+#Debug function
+func Dquit():
+	if Input.is_action_just_pressed("down"):
+		get_tree().quit()

@@ -1,0 +1,12 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1729340197
+character_body_2d.gd::GDScript::-1::1729305167::0::1::::<>CharacterBody2D<>::
+icon.svg::CompressedTexture2D::2141018507047423930::1729304169::1729304233::1::::<><>::
+line_2d.gd::GDScript::-1::1729317592::0::1::::<>Line2D<>::
+movement_fish.gd::GDScript::-1::1729308059::0::1::::<>Node2D<>::
+movement_fish.tscn::PackedScene::127298133261978681::1729318655::0::1::::<><>::res://movement_fish.gd<>res://character_body_2d.gd<>uid://5rei54233ve5::::res://icon.svg
+new_script.gd::GDScript::-1::1729304169::0::1::::<>Node<>::
+node_2d.gd::GDScript::-1::1729318328::0::1::::<>Node2D<>::
+TesteAnzol.tscn::PackedScene::4541098337582564896::1729318655::0::1::::<><>::res://node_2d.gd<>uid://cuhkgjq72mwcf::::res://Arts/Anzol.png<>res://line_2d.gd
+::res://Arts/::1729308900
+Anzol.png::CompressedTexture2D::6191687268033895985::1729308894::1729308896::1::::<><>::
