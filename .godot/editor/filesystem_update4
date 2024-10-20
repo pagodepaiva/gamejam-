@@ -1,14 +1,3 @@
-res://scenes/roaming_fish.tscn
-res://main.tscn
-res://scenes/right_roaming_fish.tscn
-res://scenes/left_roaming_fish.tscn
-res://scenes/scenario.tscn
-res://scripts/scenario.gd
-res://scripts/sea.gd
-res://scenes/sea.tscn
-res://scripts/sky_bg.gd
-res://scenes/sky_bg.tscn
 res://scenes/display.tscn
-res://scenes/bear.tscn
+res://scenes/roaming_fish.tscn
 res://scripts/roaming_fish.gd
-res://scenes/lots_of_fishes.tscn

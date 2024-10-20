@@ -1,3 +1,5 @@
+TileMapLayer
+TileMap
 Sprite2D
 AnimatedSprite2D
 ParallaxBackground
@@ -10,5 +12,3 @@ Area2D
 Parallax2D
 ShapeCast2D
 Timer
-Node2D
-Panel

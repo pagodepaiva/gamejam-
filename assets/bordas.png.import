@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtibpvvysccae"
-path="res://.godot/imported/fogueche_MOV.png-53042aadcc0ccfe12618c9ece332fd0b.ctex"
+uid="uid://xdxo5lcicqsr"
+path="res://.godot/imported/bordas.png-8feda57a89c9c24df824d1e305a55aac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fogueche_MOV.png"
-dest_files=["res://.godot/imported/fogueche_MOV.png-53042aadcc0ccfe12618c9ece332fd0b.ctex"]
+source_file="res://assets/bordas.png"
+dest_files=["res://.godot/imported/bordas.png-8feda57a89c9c24df824d1e305a55aac.ctex"]
 
 [params]
 

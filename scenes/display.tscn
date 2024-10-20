@@ -11,6 +11,9 @@ metadata/_edit_horizontal_guides_ = [596.0]
 
 [node name="sky_BG" parent="." instance=ExtResource("2_paqp1")]
 
+[node name="sea" parent="." instance=ExtResource("1_e6ne1")]
+position = Vector2(0, 0)
+
 [node name="BancadaPng" type="Sprite2D" parent="."]
 position = Vector2(947, 485)
 texture = ExtResource("3_dp6vw")
@@ -18,8 +21,10 @@ texture = ExtResource("3_dp6vw")
 [node name="bear" parent="BancadaPng" instance=ExtResource("4_0xwrq")]
 position = Vector2(-522, -268)
 
-[node name="sea" parent="." instance=ExtResource("1_e6ne1")]
-position = Vector2(0, 0)
-
-[node name="main" parent="." instance=ExtResource("5_cpy8r")]
+[node name="fishs" parent="." instance=ExtResource("5_cpy8r")]
 position = Vector2(-1, -1)
+
+[node name="sea2" parent="." instance=ExtResource("1_e6ne1")]
+modulate = Color(1, 1, 1, 0.427451)
+self_modulate = Color(1, 1, 1, 0.529412)
+position = Vector2(0, 0)

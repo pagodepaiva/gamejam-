@@ -11,7 +11,7 @@ var last_direction = 0
 func _ready():
 	position.y = -10000
 	position.x = -10000
-	$sprite.modulate.a = 0.7
+	#$sprite.modulate.a = 0.7
 	
 func _physics_process(delta: float) -> void:
 	
