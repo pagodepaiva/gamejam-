@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5x0hxo5a6v5y"]
 
-[ext_resource type="Script" path="res://Scripts/node_2d.gd" id="1_npt8x"]
-[ext_resource type="Script" path="res://Scripts/TesteAnzol.gd" id="2_8v2up"]
-[ext_resource type="Texture2D" uid="uid://c3fric83g0um4" path="res://Arts/Anzol_ilustras.png" id="3_v42cr"]
-[ext_resource type="Texture2D" uid="uid://cfpcppi4shl32" path="res://Arts/Textura_Corda.jpeg" id="4_0giwi"]
+[ext_resource type="Script" path="res://Scripts/node_2d.gd" id="1_0gq5e"]
+[ext_resource type="Script" path="res://Scripts/TesteAnzol.gd" id="2_r3alg"]
+[ext_resource type="Texture2D" uid="uid://c3fric83g0um4" path="res://Arts/Anzol_ilustras.png" id="3_0y543"]
+[ext_resource type="Texture2D" uid="uid://cfpcppi4shl32" path="res://Arts/Textura_Corda.jpeg" id="4_vf5un"]
 
 [sub_resource type="GDScript" id="GDScript_mmo1j"]
 script/source = "extends Marker2D
@@ -20,22 +20,11 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_540df"]
-radius = 92.0
+radius = 140.0
 height = 472.0
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_npt8x")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.235979, 0.717237, 0.68055, 1)
+[node name="Anzol" type="Node2D"]
+script = ExtResource("1_0gq5e")
 
 [node name="EndFishingRod" type="Marker2D" parent="."]
 position = Vector2(400, 227)
@@ -47,23 +36,26 @@ script = SubResource("GDScript_mmo1j")
 [node name="HookSprite" type="Area2D" parent="."]
 position = Vector2(0, 600)
 scale = Vector2(0.25, 0.25)
-script = ExtResource("2_8v2up")
+script = ExtResource("2_r3alg")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HookSprite"]
-position = Vector2(-16, -4)
 rotation = 3.14159
 shape = SubResource("CapsuleShape2D_540df")
 
 [node name="Sprite2D" type="Sprite2D" parent="HookSprite"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_v42cr")
+texture = ExtResource("3_0y543")
+
+[node name="InicioAnzol" type="Marker2D" parent="HookSprite"]
+position = Vector2(0, -330)
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 0, 0)
 width = 7.0
-texture = ExtResource("4_0giwi")
+texture = ExtResource("4_vf5un")
 texture_mode = 1
 
 [connection signal="area_entered" from="HookSprite" to="HookSprite" method="_on_area_entered"]
 [connection signal="body_entered" from="HookSprite" to="HookSprite" method="_on_body_entered"]
+[connection signal="hit" from="HookSprite" to="." method="onHit"]

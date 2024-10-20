@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8vvg6ytnvny7"]
+[gd_scene load_steps=9 format=3 uid="uid://c8vvg6ytnvny7"]
 
 [ext_resource type="Script" path="res://Scripts/random_direction_fish_test.gd" id="1_xilse"]
 [ext_resource type="PackedScene" uid="uid://cbmn5ebnidmlr" path="res://Scenes/Fishs/Fish_Nemo.tscn" id="2_nw2lo"]
+[ext_resource type="PackedScene" uid="uid://cc6e1jystilqq" path="res://Scenes/Fishs/Fish_fogueche.tscn" id="3_oypkt"]
+[ext_resource type="PackedScene" uid="uid://d33hogcua8qmp" path="res://Scenes/Fishs/Fish_UniFish.tscn" id="4_qmssd"]
+[ext_resource type="PackedScene" uid="uid://cxgtqabiqwkm3" path="res://Scenes/Fishs/Fish_CatFish.tscn" id="5_2a8et"]
+[ext_resource type="PackedScene" uid="uid://bhq1gq30doi6r" path="res://Scenes/Fishs/Fish_SeaWorm.tscn" id="5_hbtf7"]
+[ext_resource type="PackedScene" uid="uid://d2gl8ppn1acfm" path="res://Scenes/Fishs/Fish_SpinFish.tscn" id="6_65k51"]
 
 [sub_resource type="Curve2D" id="Curve2D_g0dty"]
 _data = {
@@ -11,13 +16,12 @@ point_count = 6
 
 [node name="Node" type="Node"]
 script = ExtResource("1_xilse")
-Fish_scene = ExtResource("2_nw2lo")
-
-[node name="BackGroundColor" type="ColorRect" parent="."]
-offset_top = 380.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.0757176, 0.547521, 0.407538, 1)
+Nemo_scene = ExtResource("2_nw2lo")
+Fogueche_scene = ExtResource("3_oypkt")
+UniFish_scene = ExtResource("4_qmssd")
+CatFish_scene = ExtResource("5_2a8et")
+SeaWorm_scene = ExtResource("5_hbtf7")
+SpinFish_scene = ExtResource("6_65k51")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_g0dty")
@@ -28,7 +32,22 @@ rotation = -1.5708
 progress = 4635.03
 
 [node name="SpawnTimer_Nemo" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.0
+
+[node name="SpawnTimer_Fogueche" type="Timer" parent="."]
+wait_time = 20.0
+
+[node name="SpawnTimer_Unifish" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="SpawnTimer_CatFish" type="Timer" parent="."]
+wait_time = 8.0
+
+[node name="SpawnTimer_SeaWorm" type="Timer" parent="."]
+wait_time = 16.0
+
+[node name="SpawnTimer_SpinFish" type="Timer" parent="."]
+wait_time = 7.0
 
 [node name="AreaDeColisao" type="Area2D" parent="."]
 
@@ -37,4 +56,9 @@ build_mode = 1
 polygon = PackedVector2Array(-72, 433, 203, 433, 1068, 440, 2031, 436, 2147, 255, 1958, 411, 1364, 410, 661, 415, 153.505, 412.1, -39, 411, 6, 376, 388, 379, 1211, 379, 1921, 380, 1977, 377, 2149, 255, 1898, 160, 1016, 164, -5, 191, -249, 206, -275, 330)
 
 [connection signal="timeout" from="SpawnTimer_Nemo" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer_Fogueche" to="." method="SpawnFogueche"]
+[connection signal="timeout" from="SpawnTimer_Unifish" to="." method="spawnUniFish"]
+[connection signal="timeout" from="SpawnTimer_CatFish" to="." method="spawnCatFish"]
+[connection signal="timeout" from="SpawnTimer_SeaWorm" to="." method="spawnSeaWorm"]
+[connection signal="timeout" from="SpawnTimer_SpinFish" to="." method="spawnSpinFish"]
 [connection signal="body_entered" from="AreaDeColisao" to="." method="_on_area_2d_body_entered"]

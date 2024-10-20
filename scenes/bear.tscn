@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c85yt58qriosx"]
+[gd_scene load_steps=5 format=3 uid="uid://c85yt58qriosx"]
 
 [ext_resource type="Texture2D" uid="uid://c222okuobbulb" path="res://assets/Ursos Coloridos PNG.png" id="1_ggxc3"]
+[ext_resource type="Script" path="res://Scenes/bear.gd" id="2_fclel"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2iya"]
 atlas = ExtResource("1_ggxc3")
@@ -20,3 +21,4 @@ animations = [{
 [node name="bear" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_gq6iu")
 animation = &"base"
+script = ExtResource("2_fclel")

@@ -44,7 +44,6 @@ frame_progress = 0.536667
 position = Vector2(-40, -16)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-build_mode = 1
 polygon = PackedVector2Array(-32, -69, -119.508, -5.08967, -121, -3, -121.566, -0.0358791, -120, 4, -103, 18, -83, 33, -72, 40, -56, 50, -39, 59, -24, 68, -22, 55, -24, 24, 32, 24, 32, -32, 32, -32, -28, -29)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

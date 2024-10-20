@@ -1,5 +1,5 @@
 extends RigidBody2D
-var TypeFish = 2
+var TypeFish = 6 #SpinFish
 var FacingLeft = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

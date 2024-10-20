@@ -1,4 +1,9 @@
 extends Node2D
+var control = false
+var mouse_posX 
+var mouse_pos 
+var mouse_posY
+
 
 #DEBUG ONLY
 func Dquit(): #DEVE ser retirado do código final
@@ -10,16 +15,22 @@ func _ready() -> void:
 	$Line2D.set_point_position(0,$EndFishingRod.position)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
+func onHit():
+	control = true
+	
+	
+
 func CheckMousePos(): #Checa a posição do mouse e so atualiza se ela for maior que o final da vara, é so pra evitar que a linha vá pro céu
-	var mouse_posX = $EndFishingRod.position.x
-	var mouse_pos = get_global_mouse_position()
-	var mouse_posY
-	
-	if mouse_pos.y <= $EndFishingRod.position.y:
-		mouse_posY = $EndFishingRod.position.y
-	else:
-		mouse_posY = mouse_pos.y
-	
+	if not control:
+		mouse_posX = $EndFishingRod.position.x
+		mouse_pos = get_global_mouse_position()
+		mouse_posY
+		
+		if mouse_pos.y <= $EndFishingRod.position.y:
+			mouse_posY = $EndFishingRod.position.y
+		else:
+			mouse_posY = mouse_pos.y
+		
 	return Vector2(mouse_posX,mouse_posY)
 	
 	

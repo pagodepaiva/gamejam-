@@ -19,6 +19,7 @@ func releaseFish():
 	if Input.is_action_pressed("left"):
 		$Sprite2D.texture = preload("res://Arts/Anzol_ilustras.png")
 		$Sprite2D.scale = Vector2(0.5,0.5)
+		$Sprite2D.position
 		control = 0
 #DEBUG ONLY
 
@@ -31,10 +32,23 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	hit.emit()
 	if body.TypeFish == 1:
-		$Sprite2D.texture = preload("res://Arts/peixe1.png")
-		$Sprite2D.scale = Vector2(2.0,2.0)
+		$Sprite2D.texture = preload("res://Arts/Nemo/morto.png")
+		$Sprite2D.scale = Vector2(0.62,0.62)
 	elif body.TypeFish == 2:
-		$Sprite2D.texture = preload("res://Arts/Fogueche/fogueche_1.png")
+		$Sprite2D.texture = preload("res://Arts/Fogueche/morto.png")
+		$Sprite2D.scale = Vector2(0.62,0.62)
+	elif body.TypeFish == 3:
+		$Sprite2D.texture = preload("res://Arts/CatFish/morto.png")
+		$Sprite2D.scale = Vector2(0.62,0.62)
+	elif body.TypeFish == 4:
+		$Sprite2D.texture = preload("res://Arts/SeaWorm/morto.png")
+		$Sprite2D.scale = Vector2(0.62,0.62)
+	elif body.TypeFish == 5:
+		$Sprite2D.texture = preload("res://Arts/UniFish/morto.png")
+		$Sprite2D.scale = Vector2(0.62,0.62)
+	elif body.TypeFish == 6:
+		$Sprite2D.texture = preload("res://Arts/SpinFish/Morto.png")
+		$Sprite2D.scale = Vector2(0.62,0.62)
 	$CollisionShape2D.set_deferred("disabled",true)
 	body.hide()
 	control = 1

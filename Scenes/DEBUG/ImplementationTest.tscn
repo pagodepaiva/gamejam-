@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://tvd33gfr7lny"]
 
 [ext_resource type="PackedScene" uid="uid://c8vvg6ytnvny7" path="res://Scenes/TestScenes/FishMov.tscn" id="1_akeoa"]
-[ext_resource type="PackedScene" uid="uid://b5x0hxo5a6v5y" path="res://Scenes/DEBUG/TesteAnzol.tscn" id="2_ui0jv"]
+[ext_resource type="PackedScene" uid="uid://b5x0hxo5a6v5y" path="res://Scenes/DEBUG/Anzol.tscn" id="2_ui0jv"]
 
 [sub_resource type="GDScript" id="GDScript_pqhrj"]
 script/source = "extends Node
