@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://3va6hswntc1o"]
+
+[ext_resource type="Script" path="res://scripts/right_roaming_fish.gd" id="1_mfsg0"]
+[ext_resource type="PackedScene" uid="uid://ddfxqchb3q5o0" path="res://scenes/roaming_fish.tscn" id="2_m2kww"]
+
+[node name="right_roaming_fish" type="Node2D"]
+script = ExtResource("1_mfsg0")
+
+[node name="roaming_fish" parent="." instance=ExtResource("2_m2kww")]
+
+[connection signal="tree_exited" from="roaming_fish" to="." method="_on_roaming_fish_tree_exited"]
