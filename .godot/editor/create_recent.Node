@@ -1,3 +1,6 @@
+CollisionPolygon2D
+ProgressBar
+TextureProgressBar
 Node
 CollisionShape2D
 Area2D
@@ -9,6 +12,3 @@ RigidBody2D
 PathFollow2D
 Path2D
 ColorRect
-CharacterBody2D
-Line2D
-StaticBody2D

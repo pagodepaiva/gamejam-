@@ -3,7 +3,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$SpawnTimer.start()
+	$SpawnTimer_Nemo.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,6 +18,7 @@ func _on_spawn_timer_timeout() -> void:
 	var sort = randi() % 2
 	if sort == 0:
 		fishSpawnLocation.progress_ratio = randf_range(0.395,0.485)
+		fish.FacingLeft = true
 	else:
 		fishSpawnLocation.progress_ratio = randf_range(0.885,0.975)
 	
@@ -37,14 +38,19 @@ func _on_spawn_timer_timeout() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#body.linear_velocity = body.linear_velocity.bounce(Vector2(0,1))
+	var PreviousAngVeloc = body.angular_velocity
 	var bounceDir = Vector2(body.linear_velocity.x, -body.linear_velocity.y)
 	body.linear_velocity = bounceDir
 	if body.linear_velocity.x > 0:
 		body.angular_velocity = bounceDir.angle()*10
 	else:
 		body.angular_velocity = -bounceDir.angle()*1.40
-	await get_tree().create_timer(0.2).timeout
-	body.angular_velocity = 0.0
+	if not body.is_queued_for_deletion():
+		if not body.is_visible_in_tree():
+			body.queue_free()
+		else:
+			await get_tree().create_timer(0.2).timeout
+			body.angular_velocity = PreviousAngVeloc
 	
 	
 	

@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://d33hogcua8qmp"]
+
+[ext_resource type="Script" path="res://Scripts/Fish_UniFish.gd" id="1_g1081"]
+[ext_resource type="Texture2D" uid="uid://dd2s5t6am5rxl" path="res://Arts/UniFish/UniFish1.png" id="2_v8ydp"]
+[ext_resource type="Texture2D" uid="uid://bky2rjcxjeum7" path="res://Arts/UniFish/UniFish2.png" id="3_44etq"]
+[ext_resource type="Texture2D" uid="uid://c46gpwah2f0rp" path="res://Arts/UniFish/UniFish3.png" id="4_77561"]
+[ext_resource type="Texture2D" uid="uid://bir2hksc2w0wa" path="res://Arts/UniFish/UniFish4.png" id="5_qk17h"]
+[ext_resource type="Texture2D" uid="uid://c4yc8edk01eim" path="res://Arts/UniFish/UniFish5.png" id="6_d5v6j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bj7rk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v8ydp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_44etq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_77561")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qk17h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d5v6j")
+}],
+"loop": true,
+"name": &"swimming",
+"speed": 10.0
+}]
+
+[node name="Fish" type="RigidBody2D"]
+collision_mask = 0
+mass = 0.001
+gravity_scale = 0.0
+continuous_cd = 2
+linear_damp_mode = 1
+script = ExtResource("1_g1081")
+
+[node name="FishSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_bj7rk")
+animation = &"swimming"
+frame_progress = 0.147185
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-69.3333, 12)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-116, -88, -120, -48, -120, -21, -130, -9, -135, 12, -131, 25, -118, 38, -101, 48, -86, 52, -70, 53, -53, 52, -30, 50, -17, 47, 0, 43, 7, 11, -14, 3, -37, -10, -61, -24, -72, -28, -84, -31, -94, -31, -103, -29, -107, -49, -112, -78)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
