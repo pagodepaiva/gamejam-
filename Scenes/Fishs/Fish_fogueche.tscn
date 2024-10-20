@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cc6e1jystilqq"]
+
+[ext_resource type="Script" path="res://Scripts/Fish_fogueche.gd" id="1_beo2j"]
+[ext_resource type="Texture2D" uid="uid://ufgmb46a2v01" path="res://Arts/Fogueche/fogueche_1.png" id="2_2b2x5"]
+[ext_resource type="Texture2D" uid="uid://cisxxwbklir4g" path="res://Arts/Fogueche/fogueche_2.png" id="3_n8kar"]
+[ext_resource type="Texture2D" uid="uid://wuxboiwxacfr" path="res://Arts/Fogueche/fogueche_3.png" id="4_86x5h"]
+[ext_resource type="Texture2D" uid="uid://bsvltqijt32il" path="res://Arts/Fogueche/fogueche_4.png" id="5_wt0cb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bj7rk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2b2x5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n8kar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_86x5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wt0cb")
+}],
+"loop": true,
+"name": &"swimming",
+"speed": 7.0
+}]
+
+[node name="Fish" type="RigidBody2D"]
+collision_mask = 0
+mass = 0.001
+gravity_scale = 0.0
+continuous_cd = 2
+linear_damp_mode = 1
+script = ExtResource("1_beo2j")
+
+[node name="FishSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_bj7rk")
+animation = &"swimming"
+frame_progress = 0.536667
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-40, -16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(-32, -69, -119.508, -5.08967, -121, -3, -121.566, -0.0358791, -120, 4, -103, 18, -83, 33, -72, 40, -56, 50, -39, 59, -24, 68, -22, 55, -24, 24, 32, 24, 32, -32, 32, -32, -28, -29)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
