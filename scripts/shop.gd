@@ -2,8 +2,7 @@ extends Node2D
 
 var money : int = 0
 
-
-var fishs = [0,0,0,0,0,0]
+var fish_storage = [0,0,0,0,0,0]
 
 """
 1 - nemo
