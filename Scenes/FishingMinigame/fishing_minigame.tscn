@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp81m2kv008o"]
+[gd_scene load_steps=6 format=3 uid="uid://dp81m2kv008o"]
 
+[ext_resource type="Script" path="res://Scenes/FishingMinigame/fishing_minigame_aux.gd" id="1_h8wsm"]
 [ext_resource type="PackedScene" uid="uid://caymoeelvms6y" path="res://Scenes/FishingMinigame/fishing_bar.tscn" id="1_oq7sb"]
 [ext_resource type="PackedScene" uid="uid://b2wt1nokgsa8" path="res://Scenes/FishingMinigame/fishing_minigame_line.tscn" id="2_uacom"]
 
@@ -10,18 +11,18 @@ size = Vector2(10, 3)
 size = Vector2(10, 2.875)
 
 [node name="FishingMinigame" type="Node2D"]
+script = ExtResource("1_h8wsm")
 
 [node name="Range" type="Panel" parent="."]
-offset_left = 198.0
-offset_top = 61.0
-offset_right = 206.0
-offset_bottom = 393.0
+offset_right = 8.0
+offset_bottom = 332.0
 scale = Vector2(1.5, 1.5)
 
 [node name="LowerLimit" type="StaticBody2D" parent="Range"]
 position = Vector2(4, 341)
 disable_mode = 1
-collision_layer = 3
+collision_layer = 6
+collision_mask = 6
 
 [node name="CollisionLowerLimit" type="CollisionShape2D" parent="Range/LowerLimit"]
 position = Vector2(0, -8.5)
@@ -30,22 +31,25 @@ shape = SubResource("RectangleShape2D_iitr6")
 [node name="UpperLimit" type="StaticBody2D" parent="Range"]
 position = Vector2(-187, -150)
 disable_mode = 1
-collision_layer = 3
+collision_layer = 6
+collision_mask = 6
 
 [node name="CollisionUpperLimit" type="CollisionShape2D" parent="Range/UpperLimit"]
 position = Vector2(191, 149)
 shape = SubResource("RectangleShape2D_ax3kq")
 
 [node name="FishingBar" parent="." instance=ExtResource("1_oq7sb")]
-position = Vector2(204, 300)
+position = Vector2(6, 300)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
 [node name="FishingMinigameLine" parent="." instance=ExtResource("2_uacom")]
-position = Vector2(206, 330)
+position = Vector2(6, 50)
 
 [connection signal="body_entered" from="FishingBar" to="FishingBar" method="_on_body_entered"]
+[connection signal="is_inside" from="FishingBar" to="." method="_on_fishing_bar_is_inside"]
+[connection signal="is_out" from="FishingBar" to="." method="_on_fishing_bar_is_out"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="FishingBar" method="_on_timer_timeout"]

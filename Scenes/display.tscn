@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://gik54jbuto6u"]
+
+[ext_resource type="PackedScene" uid="uid://c5kvwmjrfjoo6" path="res://Scenes/sea.tscn" id="1_e6ne1"]
+[ext_resource type="Script" path="res://Scenes/display.gd" id="1_k3q7n"]
+[ext_resource type="PackedScene" path="res://Scenes/sky_bg.tscn" id="2_paqp1"]
+[ext_resource type="Texture2D" uid="uid://dcotnrb5b8ile" path="res://Assets/Bancada PNG.png" id="3_dp6vw"]
+[ext_resource type="PackedScene" uid="uid://co04k88la015s" path="res://Scenes/bear.tscn" id="4_0xwrq"]
+[ext_resource type="PackedScene" uid="uid://c8vvg6ytnvny7" path="res://Scenes/TestScenes/FishMov.tscn" id="6_dgsjc"]
+[ext_resource type="PackedScene" uid="uid://b5x0hxo5a6v5y" path="res://Scenes/DEBUG/Anzol.tscn" id="6_kqovv"]
+[ext_resource type="PackedScene" uid="uid://dp81m2kv008o" path="res://Scenes/FishingMinigame/fishing_minigame.tscn" id="8_ta6q2"]
+[ext_resource type="Texture2D" uid="uid://bannphej7lm0n" path="res://Atlas_Texture/fishing_rod.tres" id="9_k3tsf"]
+
+[node name="Display" type="Node2D"]
+script = ExtResource("1_k3q7n")
+metadata/_edit_horizontal_guides_ = [596.0]
+
+[node name="sky_BG" parent="." instance=ExtResource("2_paqp1")]
+
+[node name="sea" parent="." instance=ExtResource("1_e6ne1")]
+position = Vector2(0, 0)
+
+[node name="BancadaPng" type="Sprite2D" parent="."]
+position = Vector2(947, 485)
+texture = ExtResource("3_dp6vw")
+
+[node name="bear" parent="BancadaPng" instance=ExtResource("4_0xwrq")]
+position = Vector2(-522, -268)
+
+[node name="sea2" parent="." instance=ExtResource("1_e6ne1")]
+modulate = Color(1, 1, 1, 0.427451)
+self_modulate = Color(1, 1, 1, 0.529412)
+position = Vector2(0, 0)
+
+[node name="Anzol" parent="." instance=ExtResource("6_kqovv")]
+position = Vector2(329, -165)
+
+[node name="Node2" parent="." instance=ExtResource("6_dgsjc")]
+
+[node name="FishingMinigame" parent="." instance=ExtResource("8_ta6q2")]
+position = Vector2(1103, 42)
+
+[node name="Vara" type="Sprite2D" parent="."]
+position = Vector2(545, 189)
+texture = ExtResource("9_k3tsf")
+
+[connection signal="hit" from="Anzol" to="FishingMinigame" method="_on_anzol_hit"]
+[connection signal="releasingFish" from="Anzol" to="FishingMinigame" method="_on_anzol_releasing_fish"]
+[connection signal="is_inside" from="FishingMinigame" to="Anzol" method="_on_fishing_minigame_is_inside"]
+[connection signal="is_out" from="FishingMinigame" to="Anzol" method="_on_fishing_minigame_is_out"]

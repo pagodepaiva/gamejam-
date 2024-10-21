@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxgtqabiqwkm3"]
+
+[ext_resource type="Script" path="res://Scripts/Fish_CatFish.gd" id="1_cmlek"]
+[ext_resource type="Texture2D" uid="uid://blpf62t3du78l" path="res://Arts/CatFish/pirainha_1.png" id="2_ykibf"]
+[ext_resource type="Texture2D" uid="uid://bjdgao0y7hvaw" path="res://Arts/CatFish/pirainha_2.png" id="3_xoi7e"]
+[ext_resource type="Texture2D" uid="uid://d11if85n777d2" path="res://Arts/CatFish/pirainha_3.png" id="4_sg0jo"]
+[ext_resource type="Texture2D" uid="uid://drf0vgrdyt1yf" path="res://Arts/CatFish/pirainha_4.png" id="5_inxc4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bj7rk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ykibf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xoi7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sg0jo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_inxc4")
+}],
+"loop": true,
+"name": &"swimming",
+"speed": 5.0
+}]
+
+[node name="Fish" type="RigidBody2D"]
+collision_mask = 0
+mass = 0.001
+gravity_scale = 0.0
+continuous_cd = 2
+linear_damp_mode = 1
+script = ExtResource("1_cmlek")
+
+[node name="FishSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_bj7rk")
+animation = &"swimming"
+frame_progress = 0.0864877
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-40, -16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-56, -90, -70, -61, -76, -43, -80, -23, -80, -6, -78, 6, -78, 9, -77, 13, -67, 17, -24, -4, -10, -15, -10, -18, -25, -34, -39, -57)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

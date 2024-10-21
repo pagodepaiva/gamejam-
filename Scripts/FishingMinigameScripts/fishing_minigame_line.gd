@@ -3,7 +3,7 @@ extends RigidBody2D
 #Direção da barra
 var lineDirection = Vector2()
 #Velocidade em que a barra se move
-const SPEED = 1.5
+const SPEED = 5
 
 func calc():
 	#Caso o player aperte espaço a barra desce
@@ -13,5 +13,6 @@ func calc():
 	return -1
 
 func _physics_process(delta):
-	lineDirection.y = calc()*SPEED
-	move_and_collide(lineDirection)
+	if(self.visible):
+		lineDirection.y = calc()*SPEED
+		move_and_collide(lineDirection)

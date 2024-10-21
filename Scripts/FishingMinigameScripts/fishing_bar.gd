@@ -21,6 +21,9 @@ var UPPER_LIMIT
 var LOWER_LIMIT_SPRITE
 #Limite inferior quando o objeto vai retornar ao valor original
 var LOWER_LIMIT
+#Sinal que diz quando a barra está dentro
+signal is_inside
+signal is_out
 
 func _ready() -> void:
 	#Define uma direção aleatória pra barra no intervalo (-1, 1)
@@ -33,14 +36,11 @@ func _ready() -> void:
 	LOWER_LIMIT_SPRITE = $BarSprite.scale.x * DOWN_SCALE
 	UPPER_LIMIT = $Collision.scale.y / DOWN_SCALE
 	LOWER_LIMIT = $Collision.scale.y * DOWN_SCALE
-	#Debug
-	print(UPPER_LIMIT)
-	print(LOWER_LIMIT)
 
 func resizeBar():
 	#Caso a area2D possua algum corpo dentro (A linhazinha do minigame)
 	if($IntercessionArea.has_overlapping_bodies()):
-		print("Inside")
+		is_inside.emit()
 		#Timer para deixar mais natural
 		await get_tree().create_timer(0.1).timeout
 		#Caso ainda não tenha atingido o limite
@@ -60,13 +60,14 @@ func resizeBar():
 		if($Collision.scale.y < UPPER_LIMIT):
 			$Collision.scale.y += 0.1
 			$IntercessionArea.scale.y = $Collision.scale.y
-		print("Out")
+		is_out.emit()
 
 func _process(delta: float) -> void:
 	#Seta a direção com a velocidade
-	barDirection.y *= VELOCITY
-	resizeBar()
-	move_and_collide(barDirection)
+	if(visible):
+		barDirection.y *= VELOCITY
+		resizeBar()
+		move_and_collide(barDirection)
 
 func _on_timer_timeout() -> void:
 	#A cada 0.5 segundos seta uma nova direção pra barra
