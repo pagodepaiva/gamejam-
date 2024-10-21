@@ -1,3 +1,7 @@
+Button
+Polygon2D
+TextureButton
+Sprite2D
 CollisionPolygon2D
 ProgressBar
 TextureProgressBar
@@ -8,7 +12,3 @@ Node2D
 Timer
 VisibleOnScreenNotifier2D
 AnimatedSprite2D
-RigidBody2D
-PathFollow2D
-Path2D
-ColorRect
