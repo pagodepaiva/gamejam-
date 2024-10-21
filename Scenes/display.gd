@@ -11,3 +11,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_timer_timeout() -> void:
+	$Panel.hide()
+	$Panel.queue_free()
+
+
+func _on_musica_finished() -> void:
+	$Musica.play()

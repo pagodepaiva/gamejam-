@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://gik54jbuto6u"]
+[gd_scene load_steps=11 format=3 uid="uid://gik54jbuto6u"]
 
 [ext_resource type="PackedScene" uid="uid://c5kvwmjrfjoo6" path="res://Scenes/sea.tscn" id="1_e6ne1"]
 [ext_resource type="Script" path="res://Scenes/display.gd" id="1_k3q7n"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b5x0hxo5a6v5y" path="res://Scenes/DEBUG/Anzol.tscn" id="6_kqovv"]
 [ext_resource type="PackedScene" uid="uid://dp81m2kv008o" path="res://Scenes/FishingMinigame/fishing_minigame.tscn" id="8_ta6q2"]
 [ext_resource type="Texture2D" uid="uid://bannphej7lm0n" path="res://Atlas_Texture/fishing_rod.tres" id="9_k3tsf"]
+[ext_resource type="AudioStream" uid="uid://dfkyvs8wh4dix" path="res://Music/Musica.wav" id="10_t67r2"]
 
 [node name="Display" type="Node2D"]
 script = ExtResource("1_k3q7n")
@@ -43,7 +44,47 @@ position = Vector2(1103, 42)
 position = Vector2(545, 189)
 texture = ExtResource("9_k3tsf")
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1216.0
+offset_top = 40.0
+offset_right = 1816.0
+offset_bottom = 440.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 1694.0
+offset_bottom = 205.0
+text = "Movimento do mouse: 
+Mover o mouse para cima ou para baixo faz, respectivamente, 
+o comprimento da corda de pesca aumentar ou diminuir.
+
+Botão esquerdo do Mouse:
+Quando o anzol estiver em cima de um peixe é possível clicar no botão 
+esquerdo do mouse para que comece a fisgá-lo. Contudo, não é garantido,
+você deve vencer o peixe para poder capturá-lo
+
+Espaço:
+Para fisgar o peixe é necessário tirá-lo do mar.
+Para isso deve-se acompanhar a barra azul com o retângulo cinza na 
+barra de pesca. Ao manter o espaço pressionado, o retângulo cinza 
+se movimenta para baixo, caso não esteja pressionado o retângulo cinza 
+automaticamente se movimentará para cima.
+"
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 40.0
+autostart = true
+
+[node name="Musica" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_t67r2")
+autoplay = true
+
 [connection signal="hit" from="Anzol" to="FishingMinigame" method="_on_anzol_hit"]
 [connection signal="releasingFish" from="Anzol" to="FishingMinigame" method="_on_anzol_releasing_fish"]
 [connection signal="is_inside" from="FishingMinigame" to="Anzol" method="_on_fishing_minigame_is_inside"]
 [connection signal="is_out" from="FishingMinigame" to="Anzol" method="_on_fishing_minigame_is_out"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="Musica" to="." method="_on_musica_finished"]

@@ -21,8 +21,7 @@ func releaseFish():
 
 
 func _process(delta: float) -> void:
-	print(collision_layer)
-	print(collision_mask)
+	pass
 
 #Função de colisão, caso o Usuario fisgue o anzol passa a ser um anzol com o peixe
 func _on_body_entered(body: Node2D) -> void:
